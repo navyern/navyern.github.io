@@ -32,8 +32,8 @@
             <p class="tm-site-description">高质量PPT分享网站</p>
             <nav class="navbar navbar-expand-md tm-main-nav-container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa fa-bars"></i>
-        </button>
+                    <i class="fa fa-bars"></i>
+                </button>
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
                     <ul class="nav nav-fill tm-main-nav-ul">
                         <li class="nav-item">
@@ -192,7 +192,8 @@
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
-                    $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" + object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
+                    $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" + object.get(
+                        'Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
 
                 }
             },
@@ -207,7 +208,8 @@
                 // There are number instances of MyClass. 数据库内PPT的数量为number
                 var pageNum = (number % 8) == 0 ? (number / 6) : parseInt(number / 8 + 1); //获得分页数
                 for (var i = 1; i <= pageNum; i++) {
-                    $("#Page_PPT").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">" + i + "</a></li>"); //生成页码
+                    $("#Page_PPT").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">" + i +
+                        "</a></li>"); //生成页码
                 }
 
             },
@@ -224,7 +226,8 @@
                         for (var i = 0; i < results.length; i++) {
                             var object = results[i];
                             $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
-                            $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" + object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
+                            $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
+                                object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
                         }
                     },
                     error: function(error) {
@@ -244,6 +247,31 @@
         // $("#Page_PPT1").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">2</a></li>"); //生成下面的页码
         //query.greaterThan("NO", 8); //序号比3大
     </script>
+
+    <script>
+        window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {},
+                "bdText": "",
+                "bdMini": "2",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "0",
+                "bdSize": "16"
+            },
+            "slide": {
+                "type": "slide",
+                "bdImg": "2",
+                "bdPos": "right",
+                "bdTop": "100"
+            }
+        };
+        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
+            'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)
+        ];
+    </script>
+
+
 </body>
 
 </html>
