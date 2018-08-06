@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>星云行者--高质量PPT分享网站</title>
 
+    <meta name="baidu-site-verification" content="d26bba78d9f59e94ecde5067cbfb513a"/>
+
+
+
+
     <!-- load stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <!-- Google web font "Open Sans" -->
@@ -31,7 +36,8 @@
             <h1 class="tm-site-name">星云行者</h1>
             <p class="tm-site-description">高质量PPT分享网站</p>
             <nav class="navbar navbar-expand-md tm-main-nav-container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
@@ -145,8 +151,8 @@
                     <!-- start http://count.knowsky.com -->
                     <div>
                         <p class="tm-margin-b">您是第
-                            <script src="http://count.knowsky.com/count1/count.asp?id=277737&sx=2&ys=5" language="JavaScript" charset="gb2312"></script>
-                            位访客！</p>
+                            <script src="http://count.knowsky.com/count1/count.asp?id=277737&sx=2&ys=5" language="JavaScript" charset="gb2312"></script> 位访客！
+                        </p>
 
                     </div>
 
@@ -173,7 +179,7 @@
     <script type="text/javascript" src="js/bmob.js"></script>
     <!-- 引入Bmob后端云SDK -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // Update the current year in copyright
             $('.tm-current-year').text(new Date().getFullYear());
@@ -188,7 +194,7 @@
         var query = new Bmob.Query(Government_PPT);
         query.limit(8); //设置取前8个，用于生成首页8个PPT下载
         query.find({
-            success: function(results) {
+            success: function (results) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
@@ -197,14 +203,14 @@
 
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 alert("查询失败: " + error.code + " " + error.message);
                 alert("查询失败！");
             }
         });
         //首页生成完毕，下面是根据数据中所有PPT的数量生成页码
         query.count({
-            success: function(number) {
+            success: function (number) {
                 // There are number instances of MyClass. 数据库内PPT的数量为number
                 var pageNum = (number % 8) == 0 ? (number / 6) : parseInt(number / 8 + 1); //获得分页数
                 for (var i = 1; i <= pageNum; i++) {
@@ -213,32 +219,32 @@
                 }
 
             },
-            error: function(error) {
+            error: function (error) {
                 // error is an instance of Bmob.Error.
             }
         });
         //根据页码数来更新8个ppt的显示以及下载链接
-        $("#Page_PPT").on("click", "li", function() { //只需要找到你点击的是哪个ul里面的就行
-                //    query.limit(($(this).text() * 8));
-                query.greaterThan("NO", ($(this).text() - 1) * 8);
-                query.find({
-                    success: function(results) {
-                        for (var i = 0; i < results.length; i++) {
-                            var object = results[i];
-                            $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
-                            $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
-                                object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
-                        }
-                    },
-                    error: function(error) {
-                        alert("查询失败: " + error.code + " " + error.message);
-                        alert("查询失败！");
+        $("#Page_PPT").on("click", "li", function () { //只需要找到你点击的是哪个ul里面的就行
+            //    query.limit(($(this).text() * 8));
+            query.greaterThan("NO", ($(this).text() - 1) * 8);
+            query.find({
+                success: function (results) {
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
+                        $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
+                            object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
                     }
-                });
+                },
+                error: function (error) {
+                    alert("查询失败: " + error.code + " " + error.message);
+                    alert("查询失败！");
+                }
+            });
 
 
 
-            }
+        }
 
 
         );
@@ -247,34 +253,6 @@
         // $("#Page_PPT1").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">2</a></li>"); //生成下面的页码
         //query.greaterThan("NO", 8); //序号比3大
     </script>
-
-<<<<<<< HEAD
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"right","bdTop":"249.98751831054688"},"image":{"viewList":["weixin","qzone","tsina","tqq","renren","sqq","youdao"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","renren","sqq","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-=======
-    <script>
-        window._bd_share_config = {
-            "common": {
-                "bdSnsKey": {},
-                "bdText": "",
-                "bdMini": "2",
-                "bdMiniList": false,
-                "bdPic": "",
-                "bdStyle": "0",
-                "bdSize": "16"
-            },
-            "slide": {
-                "type": "slide",
-                "bdImg": "2",
-                "bdPos": "right",
-                "bdTop": "100"
-            }
-        };
-        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
-            'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)
-        ];
-    </script>
->>>>>>> 6010eb715862412f64c3072a2d9a28213439e879
 
 
 </body>
