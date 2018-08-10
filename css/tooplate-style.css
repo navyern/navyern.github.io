@@ -115,7 +115,7 @@ button:focus { outline: none; }
 .tm-main-nav { background-color: rgba(0,0,0,0.5); }
 
 .tm-main-nav .nav-link {
-	color: white;
+	color:azure;
 	font-size: 1.3rem;
 	padding: 15px 20px;
 }
@@ -123,7 +123,8 @@ button:focus { outline: none; }
 .tm-main-nav .nav-link.active,
 .tm-main-nav .nav-link:hover,
 .tm-main-nav .nav-link:focus {
-	color: #9AC9F7;
+	color:#04DFDC;
+	font-weight:bold;
 }
 
 .tm-main-content { padding: 35px 30px; }

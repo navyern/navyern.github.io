@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>星云行者--高质量PPT分享网站</title>
+    <!-- 注册百度网站分析 -->
+    <meta name="baidu-site-verification" content="d26bba78d9f59e94ecde5067cbfb513a" />
 
     <!-- load stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
@@ -32,21 +34,21 @@
             <p class="tm-site-description">高质量PPT分享网站</p>
             <nav class="navbar navbar-expand-md tm-main-nav-container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
+          <i class="fa fa-bars"></i>
+        </button>
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
                     <ul class="nav nav-fill tm-main-nav-ul">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home</a>
+                            <a class="nav-link active" href="index.html">政府公务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Catalogs</a>
+                            <a class="nav-link" href="#">企业商务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Awards</a>
+                            <a class="nav-link" href="#">教育学习</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="team.html">Our Team</a>
+                            <a class="nav-link" href="team.html">职场工作</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">联系我们</a>
@@ -60,7 +62,7 @@
                 <header>
                     <h2 class="tm-main-title">欢迎来到星云行者</h2>
                 </header>
-                <p>星云行者网站由个人维护，致力于打造完全免费的高质量PPT分享网站。我们的原则是“宁缺毋滥！”</p>
+                <p>星云行者致力于打造完全免费的高质量PPT分享网站。我们的原则是“宁缺毋滥！”</p>
                 <div class="tm-gallery">
                     <div class="row">
                         <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
@@ -123,10 +125,7 @@
                 </div>
                 <nav class="tm-gallery-nav">
                     <ul id="Page_PPT" class="nav justify-content-center">
-                        <!--       <li class="nav-item"><a class="nav-link active" href="#">1</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">2</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">3</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">4</a></li>  -->
+                        <!--       <li class="nav-item"><a class="nav-link active" href="#">1</a></li> -->
                     </ul>
                 </nav>
             </section>
@@ -139,27 +138,23 @@
                 </div>
                 <div class="media-body">
                     <header>
-                        <h2>测试文字背景</h2>
+                        <!--  <h2>测试文字背景</h2> -->
                     </header>
                     <p class="tm-margin-b"></p>
                     <!-- start http://count.knowsky.com -->
                     <div>
                         <p class="tm-margin-b">您是第
-                            <script src="http://count.knowsky.com/count1/count.asp?id=277737&sx=2&ys=5" language="JavaScript" charset="gb2312"></script>
-                            位访客！</p>
-
+                            <script src="http://count.knowsky.com/count1/count.asp?id=277737&sx=2&ys=5" language="JavaScript" charset="gb2312"></script> 位访客！ </p>
                     </div>
 
                     <!-- Powered by http://www.knowsky.com -->
-                    <a href="" class="tm-white-bordered-btn">Live Chat</a>
+                    <a href="mailto:nebulaer@outlook.com" class="tm-white-bordered-btn">部分资源来源网络,如有侵权,请email：nebulaer@outlook.com!</a>
                 </div>
             </section>
         </div>
         <footer> Copyright &copy;
-            <span class="tm-current-year">2018</span> Shelf Company - Designed by
-            <a href="#/tooplate" target="_parent">Tooplate</a>.More Templates
-            <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from
-            <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+            <span class="tm-current-year">2018</span> Nebulaer - Designed by
+            <a href="#/tooplate" target="_parent">navyern</a>
         </footer>
     </div>
 
@@ -181,7 +176,6 @@
         });
     </script>
     <script type="text/javascript">
-        Bmob.initialize("Application ID", "REST API Key");
         Bmob.initialize("901f0b823f396e31c3de5057e3101984", "bca7e62a79cdd23b4475cb0395c45d6b");
         //对后端云数据库进行操作
         var Government_PPT = Bmob.Object.extend("Government_PPT");
@@ -192,9 +186,11 @@
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
+                    //添加点击图片到预览详细信息界面,注意问号后面传递的是PPT的表名称和id号，preview界面通过这两个参数查找对应的ppt
+                    $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Government_PPT" + "\?" +
+                        object.id + "');return false;"); //注意获得id的方式不是用get，用？号隔离开,return false是确保父页面不自动刷新
                     $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" + object.get(
-                        'Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
-
+                        'Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                  
                 }
             },
             error: function(error) {
@@ -209,7 +205,7 @@
                 var pageNum = (number % 8) == 0 ? (number / 6) : parseInt(number / 8 + 1); //获得分页数
                 for (var i = 1; i <= pageNum; i++) {
                     $("#Page_PPT").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">" + i +
-                        "</a></li>"); //生成页码
+                        "</a></li>"); //生成页码                
                 }
 
             },
@@ -219,59 +215,50 @@
         });
         //根据页码数来更新8个ppt的显示以及下载链接
         $("#Page_PPT").on("click", "li", function() { //只需要找到你点击的是哪个ul里面的就行
-                //    query.limit(($(this).text() * 8));
-                query.greaterThan("NO", ($(this).text() - 1) * 8);
-                query.find({
-                    success: function(results) {
-                        for (var i = 0; i < results.length; i++) {
-                            var object = results[i];
-                            $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
-                            $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
-                                object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接
-                        }
-                    },
-                    error: function(error) {
-                        alert("查询失败: " + error.code + " " + error.message);
-                        alert("查询失败！");
+            //    query.limit(($(this).text() * 8));
+            query.greaterThan("NO", ($(this).text() - 1) * 8);
+            query.find({
+                success: function(results) {
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
+                        //添加点击图片到预览详细信息界面,注意问号后面传递的是PPT的表名称和id号，preview界面通过这两个参数查找对应的ppt
+                        $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Government_PPT" + "\?" +
+                            object.id + "');return false;"); //注意获得id的方式不是用get，用？号隔离开
+                        $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
+                            object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                   
                     }
-                });
-
-
-
-            }
-
-
-        );
-
-
-        // $("#Page_PPT1").append("<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\">2</a></li>"); //生成下面的页码
-        //query.greaterThan("NO", 8); //序号比3大
+                },
+                error: function(error) {
+                    alert("查询失败: " + error.code + " " + error.message);
+                    alert("查询失败！");
+                }
+            });
+        });
     </script>
 
     <script>
+        //百度分享
         window._bd_share_config = {
             "common": {
                 "bdSnsKey": {},
                 "bdText": "",
-                "bdMini": "2",
-                "bdMiniList": false,
+                "bdMini": "1",
+                "bdMiniList": ["weixin", "sqq", "bdysc", "tqq", "tqf", "youdao", "mail", "evernotecn", "copy"],
                 "bdPic": "",
                 "bdStyle": "0",
                 "bdSize": "16"
             },
             "slide": {
                 "type": "slide",
-                "bdImg": "2",
+                "bdImg": "7",
                 "bdPos": "right",
-                "bdTop": "100"
+                "bdTop": "250"
             }
         };
         with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
-            'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)
-        ];
+            'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     </script>
-
-
 </body>
 
 </html>
