@@ -40,10 +40,10 @@
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
                     <ul class="nav nav-fill tm-main-nav-ul">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">政企商务</a>
+                            <a class="nav-link" href="index.html">政企商务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index2.html">教育学习</a>
+                            <a class="nav-link  active" href="index2.html">教育学习</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">具体案例</a>
@@ -178,9 +178,9 @@
     </script>
     <script type="text/javascript">
         Bmob.initialize("901f0b823f396e31c3de5057e3101984", "bca7e62a79cdd23b4475cb0395c45d6b");
-        //对后端云数据库进行操作
-        var Government_PPT = Bmob.Object.extend("Government_PPT");
-        var query = new Bmob.Query(Government_PPT);
+        //对后端云数据库进行操作，注意教育学习的数据表名称为Education_PPT
+        var Education_PPT = Bmob.Object.extend("Education_PPT");
+        var query = new Bmob.Query(Education_PPT);
         query.limit(8); //设置取前8个，用于生成首页8个PPT下载
         query.find({
             success: function(results) {
@@ -188,7 +188,7 @@
                     var object = results[i];
                     $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
                     //添加点击图片到预览详细信息界面,注意问号后面传递的是PPT的表名称和id号，preview界面通过这两个参数查找对应的ppt
-                    $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Government_PPT" + "\?" +
+                    $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Education_PPT" + "\?" +
                         object.id + "');return false;"); //注意获得id的方式不是用get，用？号隔离开,return false是确保父页面不自动刷新
                     $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" + object.get(
                         'Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                  
@@ -224,7 +224,7 @@
                         var object = results[i];
                         $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
                         //添加点击图片到预览详细信息界面,注意问号后面传递的是PPT的表名称和id号，preview界面通过这两个参数查找对应的ppt
-                        $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Government_PPT" + "\?" +
+                        $("#Thumbnail_PPT" + (i + 1)).attr("onclick", "window.open('preview.html\?" + "Education_PPT" + "\?" +
                             object.id + "');return false;"); //注意获得id的方式不是用get，用？号隔离开
                         $("#Name_PPT" + (i + 1)).html("<a href=" + object.get('DownloadAd') + ">" +
                             object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                   

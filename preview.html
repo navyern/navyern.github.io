@@ -30,8 +30,8 @@
 
     <div class="container">
         <header class="tm-site-header">
-            <h1 class="tm-site-name">Shelf</h1>
-            <p class="tm-site-description">Your Online Bookstore</p>
+            <h1 class="tm-site-name">星云<br>行者</h1>
+            <p class="tm-site-description">高质量PPT分享网站</p>
 
             <nav class="navbar navbar-expand-md tm-main-nav-container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,19 +41,19 @@
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
                     <ul class="nav nav-fill tm-main-nav-ul">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.html">政企商务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Catalogs</a>
+                            <a class="nav-link" href="index2.html">教育学习</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Awards</a>
+                            <a class="nav-link" href="#">具体案例</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="team.html">Our Team</a>
+                            <a class="nav-link" href="team.html">收费服务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact Us</a>
+                            <a class="nav-link" href="contact.html">联系我们</a>
                         </li>
                     </ul>
                 </div>
@@ -69,8 +69,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <h2 class="tm-blue-text tm-margin-b-p">PPT详细介绍</h2>
-                    <p id="Describe_PPT" class="tm-margin-b-p">Suspendisse suscipit tortor eu nunc fermentum pellentesque. Donec vaius diam ut velit porttitor accumsan. Cras ac porttitor urna, in vehicula diam. Ut ultricies leo dapibus, facilisis justo vel, dignissim tortor.
-                    </p>
+                    <p id="Describe_PPT" class="tm-margin-b-p"></p>
 
                     <!--     <p class="tm-blue-text tm-margin-b-s">Categories:
                         <a href="#" class="tm-blue-text">New Story</a>,
@@ -79,14 +78,14 @@
                     </p>
                   <p class="tm-blue-text tm-margin-b-s">Views: 10,890</p>  -->
                     <p class="tm-blue-text tm-margin-b">星级:
-                        <img src="img/star.png" alt="Star image">
-                        <img src="img/star.png" alt="Star image">
-                        <img src="img/star.png" alt="Star image">
-                        <img src="img/star.png" alt="Star image">
-                        <img src="img/star.png" alt="Star image">
+                        <img id="star1" src="img/star.png" alt="Star image" style="display:none">
+                        <img id="star2" src="img/star.png" alt="Star image" style="display:none">
+                        <img id="star3" src="img/star.png" alt="Star image" style="display:none">
+                        <img id="star4" src="img/star.png" alt="Star image" style="display:none">
+                        <img id="star5" src="img/star.png" alt="Star image" style="display:none">
                     </p>
-                    <a id="Preview_PPT" href="#" class="tm-btn tm-btn-gray tm-margin-r-20 tm-margin-b-s">Preview</a>
-                    <a id="Download_PPT" href="#" class="tm-btn tm-btn-blue">Download</a>
+                    <a id="Preview_PPT" href="#" class="tm-btn tm-btn-gray tm-margin-r-20 tm-margin-b-s">在线预览</a>
+                    <a id="Download_PPT" href="#" class="tm-btn tm-btn-blue">下载</a>
                 </div>
             </section>
 
@@ -129,14 +128,12 @@
 
 
         </div>
-        <br><br>
+        <br>
+        <br>
 
         <footer>
-            Copyright &copy;
-            <span class="tm-current-year">2018</span> Shelf Company - Designed by
-            <a href="#/tooplate" target="_parent">Tooplate</a>.More Templates
-            <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from
-            <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+            <span class="tm-current-year">2018</span> Nebulaer - Designed by
+            <a href="#/tooplate" target="_parent">navyern</a>
         </footer>
     </div>
 
@@ -196,8 +193,11 @@
                 $('#Thumbnail_PPT').attr("src", object.get('Thumbnail')); //更换ppt缩略图
                 $('#Describe_PPT').text(object.get('Describe'));
                 $('#Download_PPT').attr("href", object.get('DownloadAd')); //添加下载链接
-                $('#Preview_PPT').attr("href", ("https://view.officeapps.live.com/op/view.aspx?src=" + object.get('DownloadAd'))); //添加预览链接
-
+                $('#Preview_PPT').attr("href", ("https://view.officeapps.live.com/op/view.aspx?src=" + object.get(
+                    'DownloadAd'))); //添加预览链接
+                for (var i = 0; i <= object.get('Rating'); i++) {
+                    $('#star' + i).show(); //根据评级显示分数，1-5分
+                }
             },
 
             error: function(object, error) {
