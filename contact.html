@@ -24,6 +24,10 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
           <![endif]-->
   <link rel="icon" href="img/logo.png" type="img/x-ico" />
+  <script type="text/javascript" src="js/bmob.js"></script>
+  <!-- 引入Bmob后端云SDK -->
+  <script type="text/javascript" src="js/bmobSocketIo.js"></script>
+  <!-- 引入Bmob后端云监控sdk -->
 </head>
 
 <body>
@@ -132,10 +136,7 @@
   <!-- Popper (https://popper.js.org/) -->
   <script src="js/bootstrap.min.js"></script>
   <!-- Bootstrap (https://getbootstrap.com/) -->
-  <script type="text/javascript" src="js/bmob.js"></script>
-  <!-- 引入Bmob后端云SDK -->
-  <script type="text/javascript" src="js/bmobSocketIo.js"></script>
-  <!-- 引入Bmob后端云监控sdk -->
+
 
 
 
@@ -161,14 +162,13 @@
     BmobSocketIo.onUpdateTable = function (tablename, data) {
 
       if (tablename == "Comment") {
-        // alert(tablename);
+         alert(tablename);
         //var content = $("#data");
         //var p = '<p><span style="color:red;">' + data.contact_name + '</span>  ' + '<span style="color:green;">' + data.createdAt + '</span>  ' + ' :<br/> ' + data.content + '</p><br/><br/>';
         //content.html(content.html() + p);
         alert("1111111");
         var dataHtml = "";
-        dataHtml = "<span>11111</span><p><span>我觉得这个网站666</span></p>";
-        dataHtml += "<span>11111</span><p><span>我觉得这个网站666</span></p>";
+        dataHtml = "<span>"+data.contact_name+"</span><p><span>我觉得这个网站666</span></p>";
         document.getElementById("comment").innerHTML = dataHtml;
 
       }
@@ -192,11 +192,12 @@
         alert("请填写留言内容，谢谢！");
         return;
       }
-      var Chat = Bmob.Object.extend("Chat");
-      var chat = new Chat();
-      chat.set("name", $("#name").val());
-      chat.set("content", $("#content").val());
-      chat.save(null, {
+      var Comment = Bmob.Object.extend("Comment");
+      var Comment = new Comment();
+      Comment.set("contact_name", $("#contact_name").val());
+      Comment.set("contact_email", $("#contact_email").val());
+      Comment.set("contact_message", $("#contact_message").val());    
+      Comment.save(null, {
         success: function (object) {
         },
         error: function (model, error) {
