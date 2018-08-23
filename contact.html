@@ -84,7 +84,7 @@
               <div class="form-group">
                 <textarea id="contact_message" name="contact_message" class="form-control" rows="3" placeholder="Message" required></textarea>
               </div>
-              <button id="send" type="submit" class="tm-btn tm-btn-blue float-right" onclick="sendMsg()">提交留言</button>
+              <button id="send" type="button" class="tm-btn tm-btn-blue float-right" onclick="sendMsg()">提交留言</button>
             </form>
           </div>
         </div>
@@ -202,11 +202,14 @@
       Comment.set("contact_message", $("#contact_message").val());
       Comment.save(null, {
         success: function (object) {
-         // alert("留言成功！");
+      
         },
         error: function (model, error) {
         }
-      });
+      }
+      );
+         // alert("留言成功！");
+      history.go(0);
     }
     //---------------刷新留言区------------------------
     var Comment = Bmob.Object.extend("Comment");
@@ -219,12 +222,12 @@
           dataHtml += "<span>" + object.get('contact_name') + "</span>" + "<span style=\"float:right\">" + object.createdAt + "</span><p><span>" + object.get('contact_message') + "</span></p>";
           document.getElementById("comment").innerHTML = dataHtml;
         }
-
       },
       error: function (error) {
         alert("查询失败: " + error.code + " " + error.message);
         alert("查询失败！");
       }
+   
     });
 
   </script>
