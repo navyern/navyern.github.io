@@ -28,6 +28,9 @@
   <!-- 引入Bmob后端云SDK -->
   <script type="text/javascript" src="js/bmobSocketIo.js"></script>
   <!-- 引入Bmob后端云监控sdk -->
+
+  <meta http-equiv="Refresh" content="5">
+  <!-- 10秒自动刷新网页 -->
 </head>
 
 <body>
@@ -151,29 +154,28 @@
     }
     //--------------------------
     //服务器
-    BmobSocketIo.initialize("901f0b823f396e31c3de5057e3101984");
     Bmob.initialize("901f0b823f396e31c3de5057e3101984", "bca7e62a79cdd23b4475cb0395c45d6b");
     //初始连接socket.io服务器后，需要监听的事件都写在这个函数内
-    BmobSocketIo.onInitListen = function () {
-      //订阅Comment表的数据更新事件
-      BmobSocketIo.updateTable("Comment");
-    };
+    // BmobSocketIo.onInitListen = function () {
+    //订阅Comment表的数据更新事件
+    // BmobSocketIo.updateTable("Comment");
+    // };
     //监听服务器返回的更新表的数据
-    BmobSocketIo.onUpdateTable = function (tablename, data) {
-         alert("监听到事件！！！");
-         alert(tablename);
-      if (tablename == "Comment") {
-      //   alert(tablename);
-        //var content = $("#data");
-        //var p = '<p><span style="color:red;">' + data.contact_name + '</span>  ' + '<span style="color:green;">' + data.createdAt + '</span>  ' + ' :<br/> ' + data.content + '</p><br/><br/>';
-        //content.html(content.html() + p);
-      
-      //  var dataHtml = "";
-       // dataHtml = "<span>"+data.contact_name+"</span><p><span>我觉得这个网站666</span></p>";
-      //  document.getElementById("comment").innerHTML = dataHtml;
+    // BmobSocketIo.onUpdateTable = function (tablename, data) {
+    //   alert("监听到事件！！！");
+    //  alert(tablename);
+    //  if (tablename == "Comment") {
+    //   alert(tablename);
+    //var content = $("#data");
+    //var p = '<p><span style="color:red;">' + data.contact_name + '</span>  ' + '<span style="color:green;">' + data.createdAt + '</span>  ' + ' :<br/> ' + data.content + '</p><br/><br/>';
+    //content.html(content.html() + p);
 
-      }
-    };
+    //  var dataHtml = "";
+    // dataHtml = "<span>"+data.contact_name+"</span><p><span>我觉得这个网站666</span></p>";
+    //  document.getElementById("comment").innerHTML = dataHtml;
+
+    //  }
+    // };
 
     //-----提交留言
     function sendMsg() {
@@ -197,27 +199,32 @@
       var Comment = new Comment();
       Comment.set("contact_name", $("#contact_name").val());
       Comment.set("contact_email", $("#contact_email").val());
-      Comment.set("contact_message", $("#contact_message").val());    
+      Comment.set("contact_message", $("#contact_message").val());
       Comment.save(null, {
         success: function (object) {
+          alert("留言成功！");
         },
         error: function (model, error) {
         }
       });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //---------------刷新留言区------------------------
+    var Comment = Bmob.Object.extend("Comment");
+    var query = new Bmob.Query(Comment);
+    query.find({
+      success: function (results) {
+        var dataHtml = "";
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          dataHtml += "<span>" + object.get(contact_name) + "</span><p><span>" + object.get(contact_message) + "</span></p>";
+          document.getElementById("comment").innerHTML = dataHtml;
+        }
+      },
+      error: function (error) {
+        alert("查询失败: " + error.code + " " + error.message);
+        alert("查询失败！");
+      }
+    });
 
   </script>
 </body>
