@@ -160,16 +160,17 @@
     };
     //监听服务器返回的更新表的数据
     BmobSocketIo.onUpdateTable = function (tablename, data) {
-
-      if (tablename == "Comment") {
+         alert("监听到事件！！！");
          alert(tablename);
+      if (tablename == "Comment") {
+      //   alert(tablename);
         //var content = $("#data");
         //var p = '<p><span style="color:red;">' + data.contact_name + '</span>  ' + '<span style="color:green;">' + data.createdAt + '</span>  ' + ' :<br/> ' + data.content + '</p><br/><br/>';
         //content.html(content.html() + p);
-        alert("1111111");
-        var dataHtml = "";
-        dataHtml = "<span>"+data.contact_name+"</span><p><span>我觉得这个网站666</span></p>";
-        document.getElementById("comment").innerHTML = dataHtml;
+      
+      //  var dataHtml = "";
+       // dataHtml = "<span>"+data.contact_name+"</span><p><span>我觉得这个网站666</span></p>";
+      //  document.getElementById("comment").innerHTML = dataHtml;
 
       }
     };
