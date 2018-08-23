@@ -29,7 +29,7 @@
   <script type="text/javascript" src="js/bmobSocketIo.js"></script>
   <!-- 引入Bmob后端云监控sdk -->
 
-  <meta http-equiv="Refresh" content="5">
+  <!-- <meta http-equiv="Refresh" content="5"> -->
   <!-- 10秒自动刷新网页 -->
 </head>
 
@@ -216,9 +216,10 @@
         var dataHtml = "";
         for (var i = 0; i < results.length; i++) {
           var object = results[i];
-          dataHtml += "<span>" + object.get(contact_name) + "</span><p><span>" + object.get(contact_message) + "</span></p>";
+          dataHtml += "<span>" + object.get('contact_name') + "</span>" + "<span style=\"float:right\">" + object.createdAt + "</span><p><span>" + object.get('contact_message') + "</span></p>";
           document.getElementById("comment").innerHTML = dataHtml;
         }
+
       },
       error: function (error) {
         alert("查询失败: " + error.code + " " + error.message);
