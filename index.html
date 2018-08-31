@@ -31,13 +31,15 @@
 <body>
     <div class="container">
         <header class="tm-site-header">
-            <h1 class="tm-site-name">星云<br>行者</h1>
+            <h1 class="tm-site-name">星云
+                <br>行者</h1>
 
             <p class="tm-site-description">高质量PPT分享网站</p>
             <nav class="navbar navbar-expand-md tm-main-nav-container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa fa-bars"></i>
-        </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
                 <div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
                     <ul class="nav nav-fill tm-main-nav-ul">
                         <li class="nav-item">
@@ -65,7 +67,10 @@
                     <h2 class="tm-main-title">欢迎来到星云行者</h2>
                 </header>
                 <p>星云行者致力于打造完全免费的高质量PPT分享网站。我们的原则是“宁缺毋滥！”</p>
-                <p>如有好的意见建议，请在<span style="color:rgb(255, 0, 0);font-weight:bold"><a href="http://www.nebulaer.cn/contact.html">“联系我们”--留言板</a></span>中留言！谢谢！</p>
+                <p>如有好的意见建议，请在
+                    <span style="color:rgb(255, 0, 0);font-weight:bold">
+                        <a href="http://www.nebulaer.cn/contact.html">“联系我们”--留言板</a>
+                    </span>中留言！谢谢！</p>
                 <div class="tm-gallery">
                     <div class="row">
                         <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
@@ -171,7 +176,7 @@
     <script type="text/javascript" src="js/bmob.js"></script>
     <!-- 引入Bmob后端云SDK -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // Update the current year in copyright
             $('.tm-current-year').text(new Date().getFullYear());
@@ -183,9 +188,10 @@
         //对后端云数据库进行操作
         var Government_PPT = Bmob.Object.extend("Government_PPT");
         var query = new Bmob.Query(Government_PPT);
+        query.ascending("NO");
         query.limit(8); //设置取前8个，用于生成首页8个PPT下载
         query.find({
-            success: function(results) {
+            success: function (results) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
@@ -196,14 +202,14 @@
                         'Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                  
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 alert("查询失败: " + error.code + " " + error.message);
                 alert("查询失败！");
             }
         });
         //首页生成完毕，下面是根据数据中所有PPT的数量生成页码
         query.count({
-            success: function(number) {
+            success: function (number) {
                 // There are number instances of MyClass. 数据库内PPT的数量为number
                 var pageNum = (number % 8) == 0 ? (number / 6) : parseInt(number / 8 + 1); //获得分页数
                 for (var i = 1; i <= pageNum; i++) {
@@ -212,16 +218,16 @@
                 }
 
             },
-            error: function(error) {
+            error: function (error) {
                 // error is an instance of Bmob.Error.
             }
         });
         //根据页码数来更新8个ppt的显示以及下载链接
-        $("#Page_PPT").on("click", "li", function() { //只需要找到你点击的是哪个ul里面的就行
+        $("#Page_PPT").on("click", "li", function () { //只需要找到你点击的是哪个ul里面的就行
             //    query.limit(($(this).text() * 8));
             query.greaterThan("NO", ($(this).text() - 1) * 8);
             query.find({
-                success: function(results) {
+                success: function (results) {
                     for (var i = 0; i < results.length; i++) {
                         var object = results[i];
                         $("#Thumbnail_PPT" + (i + 1)).attr("src", object.get('Thumbnail')); //jquery方式更换img的url
@@ -232,7 +238,7 @@
                             object.get('Name') + "</a>"); //jquery方式添加PPT的名字并加入下载超链接                   
                     }
                 },
-                error: function(error) {
+                error: function (error) {
                     alert("查询失败: " + error.code + " " + error.message);
                     alert("查询失败！");
                 }
@@ -259,7 +265,7 @@
                 "bdTop": "250"
             }
         };
-        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
+        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
             'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     </script>
 </body>

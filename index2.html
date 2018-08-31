@@ -182,6 +182,7 @@
         //对后端云数据库进行操作，注意教育学习的数据表名称为Education_PPT
         var Education_PPT = Bmob.Object.extend("Education_PPT");
         var query = new Bmob.Query(Education_PPT);
+        query.ascending("NO");
         query.limit(8); //设置取前8个，用于生成首页8个PPT下载
         query.find({
             success: function(results) {
